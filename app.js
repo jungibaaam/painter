@@ -1,16 +1,16 @@
 const saveBtn = document.getElementById("save");
 const textInput = document.getElementById("text");
 const fileInput = document.getElementById("file");
-const modeBtn = document.getElementById("mode-btn");
 const destroyBtn = document.getElementById("destroy-btn");
 const eraserbtn = document.getElementById("eraser-btn");
+const modeBtn = document.getElementById("mode-btn");
 const colorOptions = Array.from(document.getElementsByClassName("color-option"));
 const lineWidth = document.getElementById("line-width");
 const color = document.getElementById("color");
 const canvas = document.querySelector("canvas");
 const ctx = canvas.getContext("2d");
-const CANVAS_WIDTH = 800;
-const CANVAS_HEIGHT = 800;
+const CANVAS_WIDTH = 600;
+const CANVAS_HEIGHT = 600;
 canvas.width = CANVAS_WIDTH
 canvas.height = CANVAS_HEIGHT
 ctx.lineWidth = lineWidth.value;
@@ -32,7 +32,6 @@ function startPainting() {
 function canclePainting() {
     isPainting = false;
     ctx.beginPath();
-
 }
 function onLineWidthChange(event) {
     ctx.lineWidth = event.target.value;
@@ -81,11 +80,11 @@ function onFileChange(event) {
     }
 }
 function onDoubleClick(event) {
-    ctx.save();
     const text = textInput.value;
     if (text !== "") {
+        ctx.save();
         ctx.lineWidth = 1;
-        ctx.font = "50px serif"
+        ctx.font = "50px sans-serif";
         ctx.fillText(text, event.offsetX, event.offsetY);
         ctx.restore();
     }
